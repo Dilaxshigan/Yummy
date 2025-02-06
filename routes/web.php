@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware'=>['revalidate_back']],function(){
     Route::get('/',[HomeController::class, 'index'])->name('home');
+    Route::post('/contact_info/submit',[HomeController::class, 'contact_submit'])->name('contact_submit');
 
     Route::group(['middleware'=>['guest_authentication']],function(){
         Route::get('/registration',[AuthController::class, 'register'])->name('register');
@@ -28,6 +29,7 @@ Route::group(['middleware'=>['revalidate_back']],function(){
         Route::put('/profile/update-profile',[ProfileController::class, 'update_profile'])->name('update_profile');
         Route::get('/profile/edit-password',[ProfileController::class, 'edit_password'])->name('edit_password');
         Route::put('/profile/update-password',[ProfileController::class, 'update_password'])->name('update_password');
+        Route::post('/book-a-table/submit', [ProfileController::class, 'booking_submit'])->name('booking_submit');
     });
 });
 

@@ -16,10 +16,10 @@
           <li><a href="#events">Events</a></li>
           <li><a href="#chefs">Chefs</a></li>
           <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
           
          
           @if(auth()->check())
-          <li><a href="#contact">Contact</a></li>
           <li class="dropdown"><a href="#"><span>My Profile</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="{{ route('edit_profile') }}">Edit Profile</a></li>

@@ -46,11 +46,11 @@
     <!-- Book A Table Section -->
      @include("home.book_table")
     <!-- /Book A Table Section -->
+    @endif
 
     <!-- Contact Section -->
-     @include("home.contact")
+      @include("home.contact")
     <!-- /Contact Section -->
-    @endif
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

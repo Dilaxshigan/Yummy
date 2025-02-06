@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\BookTable;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -57,6 +58,31 @@ class ProfileController extends Controller
         }else{
             return redirect()->back()->with('error', 'Old password does not matched..');
         }
+
+    }
+    public function booking_submit(Request $request)
+    {
+        $request->validate([
+            'name'=>'required|min:3|max:100',
+            'email'=>'required|email',
+            'phone' => 'required|min:10',
+            'date'=>'required',
+            'time'=>'required',
+            'people'=>'required'
+        ]);
+
+        $data = new BookTable;
+
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->phone = $request->phone;
+        $data->date = $request->date;
+        $data->time = $request->time;
+        $data->people = $request->people;
+
+        $data->save();
+
+        return redirect()->back()->with('booking_success','Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!');
 
     }
 }

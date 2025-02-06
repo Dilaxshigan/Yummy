@@ -56,30 +56,49 @@
 
   </div>
 
-  <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
+  <form action="{{ route('contact_submit') }}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
+    @csrf
     <div class="row gy-4">
 
       <div class="col-md-6">
         <input type="text" name="name" class="form-control" placeholder="Your Name">
+        @error('name')
+                            <span class="text-danger fw-semibold">Error message goes here</span>
+                            @enderror
       </div>
 
       <div class="col-md-6 ">
         <input type="email" class="form-control" name="email" placeholder="Your Email">
+        @error('email')
+                            <span class="text-danger fw-semibold">Error message goes here</span>
+                            @enderror
       </div>
 
       <div class="col-md-12">
         <input type="text" class="form-control" name="subject" placeholder="Subject">
+        @error('subject')
+                            <span class="text-danger fw-semibold">Error message goes here</span>
+                            @enderror
       </div>
 
       <div class="col-md-12">
         <textarea class="form-control" name="message" rows="6" placeholder="Message"></textarea>
+        @error('message')
+                            <span class="text-danger fw-semibold">Error message goes here</span>
+                            @enderror
       </div>
 
+      <div class="row d-flex align-items-center justify-content-center mt-4">
+      <div class="col-md-6">
+           @if(session('contact_success'))
+               <div class="alert alert-success text-center">
+                   {{ session('contact_success') }}
+               </div>
+          @endif
+      </div>
+      </div>
+      
       <div class="col-md-12 text-center">
-        <div class="loading">Loading</div>
-        <div class="error-message"></div>
-        <div class="sent-message">Your message has been sent. Thank you!</div>
-
         <button type="submit">Send Message</button>
       </div>
 

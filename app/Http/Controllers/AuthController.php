@@ -122,7 +122,7 @@ class AuthController extends Controller
                             }else{
                                 $remember_me=($request->remember_me)?true:false;
                                 if(auth()->attempt($request->only('email', 'password'), $remember_me)){
-                                    return redirect()->route('home')->with('success', 'User successfully login');
+                                    return redirect()->route('home');
                                 }else{
                                     return redirect()->back()->with('error','Inavalid credentials');
                                 }
@@ -137,7 +137,7 @@ class AuthController extends Controller
     public function logout()
     {
         auth()->logout();
-        return redirect()->route('home')->with('success','Logout successfull..');
+        return redirect()->route('home');
     }
     public function forget_password()
     {
